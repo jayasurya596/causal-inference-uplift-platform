@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python virtual environment
+.venv/
+.venv312/
+venv/
+env/
+
+# Ignore pipeline runtime outputs (but keep directory structures)
+outputs/data/*
+!outputs/data/.gitkeep
+!outputs/data/synthetic_data.csv
+!outputs/data/feature_matrix.csv
+!outputs/data/segmented_users.csv
+
+outputs/figures/*
+!outputs/figures/.gitkeep
+!outputs/figures/*.png
+
+outputs/tables/*
+!outputs/tables/.gitkeep
+!outputs/tables/*.csv
+
+outputs/models/*
+!outputs/models/.gitkeep
+!outputs/models/*.joblib

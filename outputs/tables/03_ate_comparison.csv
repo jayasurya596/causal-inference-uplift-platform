@@ -1,0 +1,5 @@
+Method,ATE (₹),CI Lower (₹),CI Upper (₹),Bias (₹),Bias (%)
+Naïve Comparison,261,258,265,93,55.2
+Propensity Score Matching,177,175,180,9,5.4
+Inverse Propensity Weighting,178,173,184,10,6.0
+Causal Forest (EconML),170,154,187,2,1.1

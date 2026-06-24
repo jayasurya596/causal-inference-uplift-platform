@@ -1,0 +1,4 @@
+Strategy,Users Targeted,Cost (₹),Incremental Revenue (₹),Net Profit (₹),ROI (%),Cost per Incremental ₹
+Treat Everyone (Random),20000,1000000.0,1009464.0,9464.0,0.9464,0.9906247275782
+Probability-Based (Top 50%),10000,500000.0,498915.0,-1085.0,-0.217,1.002174719140535
+Uplift-Based (Top 50%),10000,500000.0,555045.0,55045.0,11.008999999999999,0.900827860804079

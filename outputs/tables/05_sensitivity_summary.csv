@@ -1,0 +1,4 @@
+Test,Result,Metric
+Placebo Test,PASSED,p = 0.0000
+Rosenbaum Bounds,Robust,Γ = 3.00
+Random Common Cause,ROBUST,Mean shift = ₹0.0

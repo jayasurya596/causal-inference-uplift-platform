@@ -1,0 +1,56 @@
+name: Monthly Model Retraining & Causal Audit
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # Runs at 00:00 on the 1st of every month
+  workflow_dispatch:      # Allows manual execution from the GitHub Actions UI
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute Retraining Pipeline
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python 01_data_generation.py
+          python 02_power_analysis.py
+          python 03_causal_estimation.py
+          python 04_uplift_modeling.py
+          python 05_sensitivity_analysis.py
+
+      - name: Create Pull Request for Model & Asset Audit
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "chore: monthly retrained uplift model and static assets"
+          branch: "ml/monthly-retrain"
+          title: "🤖 Monthly Model Retraining & Causal Audit"
+          body: |
+            This is an automated pull request triggered by the monthly scheduled model retraining workflow.
+            
+            ### Changes:
+            1. Retrained the uplift meta-learner model and serialized it to `outputs/models/uplift_model.joblib`.
+            2. Re-generated static figures (Qini curve, propensity overlap, Love plot) and ROI tables.
+            3. Updated data diagnostics under `outputs/data/`.
+            
+            Please review the generated metrics and merge to deploy the updated model to production.
+          base: main
