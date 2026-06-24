@@ -131,7 +131,7 @@ st.sidebar.markdown(
 )
 
 # Load Render URL from Secrets, default to localhost
-api_url = st.secrets.get("RENDER_API_URL", "https://causal-inference-uplift-platform.onrender.com/docs")
+api_url = st.secrets.get("RENDER_API_URL", "https://causal-inference-uplift-platform.onrender.com")
 st.sidebar.markdown(f"**Backend API Service:**\n`{api_url}`")
 
 # ─── Helper function to ping backend (with timeout retry) ───────────
